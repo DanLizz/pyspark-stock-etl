@@ -7,7 +7,7 @@ from delta.tables import DeltaTable
 
 API+KEY = os.getenv("ALPHAVANTAGE_KEY")
 SYMBOL = os.getenv("STOCK_SYMBOL", "PNG")
-OUTPUT_PATH = os.getenv("OUTPUT_PATH", "data/bronze/stock")
+OUTPUT_PATH = os.getenv("OUTPUT_PATH", "data/raw/")
 
 spark = SparkSession.builder \
     .appName("StockDataIngestion") \
