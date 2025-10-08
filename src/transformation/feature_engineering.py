@@ -4,6 +4,10 @@ from pyspark.sql.window import Window
 
 spark = SparkSession.builder \
     .appName("stock_features") \
+    .master("local[*]").config("spark.driver.host", "127.0.0.1") \
+    .config("spark.jars.packages", "io.delta:delta-spark_2.12:3.2.0")\
+    .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")\
+    .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")\
     .getOrCreate()
 
 silver = "data/processed/silver/"
